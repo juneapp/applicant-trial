@@ -28,15 +28,15 @@ Hier sind alle relevanten Daten für das Probeprojekt.
 - `npm start` um den webpack prozess zu starten
 
 ### Endpunkte: 
-Login: http://dev.june.local:8008/api/auth/login_check
+Login: `http://dev.june.local:8008/api/auth/login_check`
 -> Credentials als JSON im Body übergeben
 
-Projekte: http://dev.june.local:8008/api/v2/project
+Projekte: `http://dev.june.local:8008/api/v2/project`
 -> Authorisation Header als Bearer Token übergeben 
 
 ### Credentials: 
-User: june.trial
-Password: -G@dBvrB2j+sr?EN
+User: `june.trial`
+Password: `-G@dBvrB2j+sr?EN`
 
 
 ### JUNE Farbcodes:
