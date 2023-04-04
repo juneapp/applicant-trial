@@ -11,7 +11,7 @@ Baue eine Loginseite für den JUNE Editor mit React. Du kannst für die Basis ge
 + API Endpunkt für die Projekte einbinden (hier wird der JWT Token aus dem Login benötigt)
 
 ### Bereitstellung:
-Bitte dokumentiere deine Schritte im Code
+Bitte dokumentiere deine Schritte im Code.
 
 ### Abgabe:
 Erstelle einen Fork von diesem Github Projekt und schicke uns dein geforktes Repository.
