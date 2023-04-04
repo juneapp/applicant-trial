@@ -14,13 +14,14 @@ Baue eine Loginseite für den JUNE Editor mit React. Du kannst für die Basis ge
 Bitte dokumentiere deine Schritte im Code
 
 ### Abgabe:
-Erstelle einen Fork von diesem Github Projekt und schicke uns dein geforktes Repository
+Erstelle einen Fork von diesem Github Projekt und schicke uns dein geforktes Repository.
 
 
 ## Daten:
-Hier sind alle relevanten Daten für das Probeprojekt
+Hier sind alle relevanten Daten für das Probeprojekt.
 
-Node v14.16.0
+### Software
++ Node v14.16.0 
 
 ### Start:
 - `npm install` um alle relevanten Packages zu installieren
