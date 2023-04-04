@@ -11,15 +11,27 @@ Baue eine Loginseite für den JUNE Editor mit React. Du kannst für die Basis ge
 + API Endpunkt für die Projekte einbinden (hier wird der JWT Token aus dem Login benötigt)
 
 ###Bereitstellung:
-Am besten lädst du deine Arbeit in ein privates Github Repository hoch
+Bitte dokumentiere deine Schritte im Code
+
+###Abgabe:
+Erstelle einen Fork von diesem Github Projekt und schicke uns dein geforktes Repository
 
 
 ##Daten:
 Hier sind alle relevanten Daten für das Probeprojekt
 
+Node v14.16.0
+
+###Start:
+- `npm install` um alle relevanten Packages zu installieren
+- `npm start` um den webpack prozess zu starten
+
 ###Endpunkte: 
-Login: https://editor.staging.juneapp.com/api/auth/login_check
-Projekte: https://editor.staging.juneapp.com/api/v2/project
+Login: http://dev.june.local:8008/api/auth/login_check
+-> Credentials als JSON im Body übergeben
+
+Projekte: http://dev.june.local:8008/api/v2/project
+-> Authorisation Header als Bearer Token übergeben 
 
 ###Credentials: 
 User: june.trial
