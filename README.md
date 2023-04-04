@@ -40,8 +40,8 @@ Password: `-G@dBvrB2j+sr?EN`
 
 
 ### JUNE Farbcodes:
-+`20C6AF`    Main Color
-+`FA9F85`    E-Mail Product Color
-+`B872EF`    Landing Page Product Color
-+`FDBE41`    Automation Product Color
-+`262626`    Paragraph, Headlines Colo
++ `20C6AF`    Main Color
++ `FA9F85`    E-Mail Product Color
++ `B872EF`    Landing Page Product Color
++ `FDBE41`    Automation Product Color
++ `262626`    Paragraph, Headlines Color
