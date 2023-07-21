@@ -32,21 +32,24 @@ module.exports = {
     }
   },
   module: {
-    // exclude node_modules
     rules: [
-      // `js` and `jsx` files are parsed using `babel`
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      // Add other rules for handling different file types if needed
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-      // `ts` and `tsx` files are parsed using `ts-loader`
       {
         test: /\.(ts|tsx)$/,
-        loader: "ts-loader"
-      }
+        loader: "ts-loader",
+      },
     ],
   },
+  
   // pass all js files through Babel
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
