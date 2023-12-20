@@ -26,6 +26,7 @@ export function DashboardPage() {
         };
     }, []);
 
+    //TODO style grid and page
     return (
         <div>
             <h3>

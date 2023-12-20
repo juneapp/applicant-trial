@@ -78,7 +78,7 @@ export function LoginForm() {
         setIsLoading(false);
     };
 
-    //TODO styling
+    //TODO style error messages
     return (
         <form onSubmit={handleSubmit} className="login-form">
             <div className="form-error" ref={errorSummaryRef} tabIndex={-1}>
