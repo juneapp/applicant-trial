@@ -1,12 +1,7 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+    "compilerOptions": {
+        "jsx": "react-jsx"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
 }
