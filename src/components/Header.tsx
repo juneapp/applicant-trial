@@ -6,7 +6,7 @@ export function Header() {
     //TODO styling
     return (
         <header>
-            <h1>JUNE</h1>
+            <img src="/june_logo.webp" width={50} alt="Description of image" />
             <div>
                 {user ? <div className="">{user.username}</div> : null}
                 {user ? <button onClick={logout}>Logout</button> : null}
