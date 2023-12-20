@@ -1,9 +1,6 @@
 import { API_BASE_URL } from "../constants";
 
-export async function loginWithUserNameAndPassword(
-    username: string,
-    password: string
-) {
+export async function loginWithCredentials(username: string, password: string) {
     const response = await fetch(`${API_BASE_URL}/auth/login_check`, {
         method: "POST",
         headers: {
@@ -21,6 +18,7 @@ export async function loginWithUserNameAndPassword(
 
     // document.cookie = `token=${token}; max-age=${60}`;
     document.cookie = `token=${token}; max-age=${60 * 60 * 24 * 7}`;
+    return data.user;
 }
 
 export function logout() {

@@ -1,7 +1,9 @@
+import { Header } from "../components";
+
 export function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <main className="">
-            {/* //TODO Header */}
+            <Header />
             {children}
         </main>
     );

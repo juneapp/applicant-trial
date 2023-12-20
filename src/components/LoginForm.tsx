@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { loginWithUserNameAndPassword } from "../services";
+import { loginWithCredentials } from "../services";
+import { useUser } from "../hooks";
 
 export function LoginForm() {
     const [username, setUsername] = useState("");
@@ -10,6 +11,8 @@ export function LoginForm() {
     const userNameInputRef = useRef<HTMLInputElement>(null);
     const formErrorRef = useRef<HTMLDivElement>(null);
     const errorSummaryRef = useRef<HTMLDivElement>(null);
+
+    const { addUser } = useUser();
 
     useEffect(() => {
         userNameInputRef.current?.focus();
@@ -32,6 +35,7 @@ export function LoginForm() {
         let isValid = true;
         if (username.trim() === "") {
             setUsernameError("Username is required");
+
             isValid = false;
         } else if (username.trim().length < 5) {
             setUsernameError("Username must be at least 5 characters long");
@@ -54,7 +58,9 @@ export function LoginForm() {
         e.preventDefault();
         if (validateForm()) {
             try {
-                await loginWithUserNameAndPassword(username, password);
+                const userData = await loginWithCredentials(username, password);
+                console.log({ userData });
+                addUser(userData);
             } catch (err: unknown) {
                 if (err instanceof Error) {
                     console.error("Login failed:", err);
@@ -64,6 +70,7 @@ export function LoginForm() {
         }
     };
 
+    //TODO styling
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-error" ref={errorSummaryRef} tabIndex={-1}>
