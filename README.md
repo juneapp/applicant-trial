@@ -36,7 +36,7 @@ Projekte: `http://dev.june.local:8008/api/v2/project`
 
 ### Credentials: 
 User: `june.trial`
-Password: `-G@dBvrB2j+sr?EN`
+Password: `Vowac#Uwiwi278`
 
 
 ### JUNE Farbcodes:
