@@ -1,0 +1,99 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, background-color 0.3s ease;
+}
+
+.button--small {
+    min-width: 75px;
+    min-height: 25px;
+    font-size: 0.75em;
+}
+
+.button--medium {
+    min-width: 100px;
+    min-height: 50px;
+    font-size: 1em;
+}
+
+.button--large {
+    min-width: 200px;
+    min-height: 100px;
+    font-size: 1.25em;
+}
+
+.button--fill {
+    width: 100%;
+    height: 100%;
+}
+
+.button--primary {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.button--secondary {
+    background-color: var(--main-color-dark);
+    color: white;
+}
+
+.button--danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.button--primary {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.button--primary:hover {
+    background-color: var(--main-color-dark);
+}
+
+.button--secondary:hover {
+    background-color: var(--main-color-darker);
+}
+
+.button--primary:active {
+    transform: scale(0.98);
+}
+
+.loading-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-indicator__spinner {
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { loginWithCredentials } from "../services";
 import { useUser } from "../hooks";
+import "./LoginForm.css";
+import { Button } from ".";
 
 export function LoginForm() {
     const [username, setUsername] = useState("");
@@ -8,6 +10,7 @@ export function LoginForm() {
     const [usernameError, setUsernameError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [formError, setFormError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const userNameInputRef = useRef<HTMLInputElement>(null);
     const formErrorRef = useRef<HTMLDivElement>(null);
     const errorSummaryRef = useRef<HTMLDivElement>(null);
@@ -56,6 +59,10 @@ export function LoginForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoading(true);
+
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
         if (validateForm()) {
             try {
                 const userData = await loginWithCredentials(username, password);
@@ -68,18 +75,20 @@ export function LoginForm() {
                 } else console.error(err);
             }
         }
+        setIsLoading(false);
     };
 
     //TODO styling
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
             <div className="form-error" ref={errorSummaryRef} tabIndex={-1}>
                 {usernameError && <p id="usernameError">{usernameError}</p>}
                 {passwordError && <p id="passwordError">{passwordError}</p>}
             </div>
-            <label>
+            <label className="login-form__input-label">
                 Username:
                 <input
+                    className="login-form__input"
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -87,9 +96,10 @@ export function LoginForm() {
                     aria-describedby="usernameError"
                 />
             </label>
-            <label>
+            <label className="login-form__input-label">
                 Password:
                 <input
+                    className="login-form__input"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -100,9 +110,15 @@ export function LoginForm() {
             <div className="form-error" ref={formErrorRef} tabIndex={-1}>
                 {formError && <p id="formError">{formError}</p>}
             </div>
-            <button type="submit" disabled={!username || !password}>
+            <Button
+                isLoading={isLoading}
+                size="medium"
+                role="primary"
+                type="submit"
+                disabled={!username || !password}
+            >
                 Log in
-            </button>
+            </Button>
         </form>
     );
 }

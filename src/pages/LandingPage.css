@@ -1,0 +1,29 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    padding: 24px;
+}
+
+.lading-page__title-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.landing-page__title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--paragraph-headlines-color);
+}
+
+.landing-page__title--sub {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--paragraph-headlines-color);
+}

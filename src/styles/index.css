@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+:root {
+    --main-color: #20c6af;
+    --main-color-light: #f1fcfa;
+    --main-color-dark: #0e8c7d;
+    --main-color-darker: #0b6b5c;
+
+    --email-product-color: #fa9f85;
+    --landing-page-product-color: #b872ef;
+
+    --automation-product-color: #fdbe41;
+    --paragraph-headlines-color: #262626;
+
+    --color-danger: #dc3545;
+}
+
+body {
+    /* background-color: var(--main-color); */
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #262626;
+}
