@@ -35,7 +35,7 @@ Projekte: `http://dev.june.local:8008/api/v2/project`
 -> Authorisation Header als Bearer Token übergeben 
 
 ### Credentials: 
-User: `june.trial`
+User: `june.application`
 Password: `Vowac#Uwiwi278`
 
 
