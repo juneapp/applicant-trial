@@ -23,6 +23,10 @@ export function decodeToken(token: string) {
                 .join("")
         );
 
+        if (!jsonPayload) {
+            return false;
+        }
+
         return true;
     } catch (error) {
         console.error("Invalid token", error);
