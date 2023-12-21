@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getProjects } from "../services/";
 import { ProjectCard } from "../components";
 import "./DashboardPage.css";
@@ -32,6 +32,12 @@ const mockProjects = [
 export function DashboardPage() {
     const [projects, setProjects] = useState<Project[] | []>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const projectErrorRef = useRef<HTMLDivElement>(null);
+    const [error, setError] = useState<string | null>();
+
+    useEffect(() => {
+        projectErrorRef.current?.focus();
+    }, [error]);
 
     useEffect(() => {
         let isMounted = true;
@@ -41,7 +47,7 @@ export function DashboardPage() {
                 //? Show loading skeleton
                 await new Promise((resolve) => setTimeout(resolve, 10000));
 
-                const projects = (await getProjects()) as Project[];
+                const projects: Project[] = await getProjects();
 
                 if (isMounted) {
                     setProjects([...projects, ...mockProjects]);
@@ -49,6 +55,7 @@ export function DashboardPage() {
                 }
             } catch (error) {
                 console.error(error);
+                setError(error.message);
             }
         };
 
@@ -64,6 +71,15 @@ export function DashboardPage() {
             <h1 className="dashboard-page__title">
                 Pro<span className="text-color-main">j</span>ects Overview
             </h1>
+            {error && (
+                <div
+                    className="dashboard-page__error-box"
+                    ref={projectErrorRef}
+                    tabIndex={-1}
+                >
+                    <p className="">{error}</p>
+                </div>
+            )}
             <section className="project-grid">
                 {isLoading ? (
                     <>

@@ -22,5 +22,5 @@ export async function getProjects(): Promise<Project[]> {
     }
 
     const data = await response.json();
-    return data.data;
+    return data.data as Project[];
 }

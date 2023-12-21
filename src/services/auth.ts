@@ -10,13 +10,14 @@ export async function loginWithCredentials(username: string, password: string) {
     });
 
     if (!response.ok) {
-        throw new Error("Login failed");
+        const data = await response.json();
+        throw new Error(data.message);
     }
 
     const data = await response.json();
     const token = data.token;
 
-    // document.cookie = `token=${token}; max-age=${60}`;
+    // document.cookie = `token=${token}; max-age=${5}`;
     document.cookie = `token=${token}; max-age=${60 * 60 * 24 * 7}`;
     return data.user;
 }

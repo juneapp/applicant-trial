@@ -112,3 +112,9 @@
     height: 250px;
     width: 250px;
 }
+
+.dashboard-page__error-box {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--paragraph-headlines-color);
+}

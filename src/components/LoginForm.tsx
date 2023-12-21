@@ -7,13 +7,14 @@ import { Button } from ".";
 export function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [usernameError, setUsernameError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [usernameWarning, setUsernameWarning] = useState("");
+    const [passwordWarning, setPasswordWarning] = useState("");
     const [formError, setFormError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const userNameInputRef = useRef<HTMLInputElement>(null);
     const formErrorRef = useRef<HTMLDivElement>(null);
     const errorSummaryRef = useRef<HTMLDivElement>(null);
+    const warningSummaryRef = useRef<HTMLDivElement>(null);
 
     const { addUser } = useUser();
 
@@ -28,10 +29,10 @@ export function LoginForm() {
     }, [formError]);
 
     useEffect(() => {
-        if (usernameError || passwordError) {
+        if (usernameWarning || passwordWarning) {
             errorSummaryRef.current?.focus();
         }
-    }, [usernameError, passwordError]);
+    }, [usernameWarning, passwordWarning]);
 
     useEffect(() => {
         setFormError("");
@@ -40,24 +41,23 @@ export function LoginForm() {
     const validateForm = () => {
         let isValid = true;
         if (username.trim() === "") {
-            setUsernameError("Username is required");
-
-            isValid = false;
+            setUsernameWarning("Username is required");
+            return false;
         } else if (username.trim().length < 5) {
-            setUsernameError("Username needs 5+ characters");
-            isValid = false;
+            setUsernameWarning("Username needs 5+ characters");
+            return false;
         } else {
-            setUsernameError("");
+            setUsernameWarning("");
         }
 
         if (password.trim() === "") {
-            setPasswordError("Password is required");
-            isValid = false;
+            setPasswordWarning("Password is required");
+            return false;
         } else if (password.trim().length < 5) {
-            setUsernameError("Password needs 5+ characters");
-            isValid = false;
+            setPasswordWarning("Password needs 5+ characters");
+            return false;
         } else {
-            setPasswordError("");
+            setPasswordWarning("");
         }
 
         return isValid;
@@ -77,24 +77,30 @@ export function LoginForm() {
             } catch (err: unknown) {
                 if (err instanceof Error) {
                     console.error("Login failed:", err);
+                    setFormError(err.message);
+                } else {
+                    console.error(err);
                     setFormError("Unable to log in");
-                } else console.error(err);
+                }
             }
         }
         setIsLoading(false);
     };
 
-    //TODO style error messages
     return (
         <form onSubmit={handleSubmit} className="login-form">
-            {(usernameError || passwordError) && (
+            {(usernameWarning || passwordWarning) && (
                 <div
-                    className="login-form__error-box"
-                    ref={errorSummaryRef}
+                    className="login-form__warning-box"
+                    ref={warningSummaryRef}
                     tabIndex={-1}
                 >
-                    {usernameError && <p id="usernameError">{usernameError}</p>}
-                    {passwordError && <p id="passwordError">{passwordError}</p>}
+                    {usernameWarning && (
+                        <p id="usernameWarning">{usernameWarning}</p>
+                    )}
+                    {passwordWarning && (
+                        <p id="passwordWarning">{passwordWarning}</p>
+                    )}
                 </div>
             )}
             <div className="login-form__input-container">

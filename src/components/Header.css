@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 16px;
+    padding: 16px 20px;
     background-color: var(--main-color);
 }
 
@@ -19,5 +19,5 @@
 .header__username {
     font-size: 16px;
     font-weight: 700;
-    color: #333;
+    color: var(--paragraph-headlines-color);
 }
