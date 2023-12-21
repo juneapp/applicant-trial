@@ -1,0 +1,25 @@
+.project-card {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 20px;
+    border: 1px solid var(--zinc-100);
+    border-radius: 8px;
+    box-shadow: var(--project-card-box-shadow);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.project-card__title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-card__id {
+    color: #888;
+    font-size: 0.9em;
+}
