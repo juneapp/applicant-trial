@@ -14,16 +14,15 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    color: var(--paragraph-headlines-color);
 }
 
 .landing-page__title {
     font-size: 32px;
-    font-weight: 600;
-    color: var(--paragraph-headlines-color);
+    font-weight: 700;
 }
 
 .landing-page__title--sub {
     font-size: 28px;
     font-weight: 400;
-    color: var(--paragraph-headlines-color);
 }

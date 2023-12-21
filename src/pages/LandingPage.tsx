@@ -10,7 +10,7 @@ export function LandingPage() {
                     className="header__logo"
                     src="/june_logo.webp"
                     width={75}
-                    alt="Description of image"
+                    alt="June Logo"
                 />
             </div>
             <h3 className="landing-page__title--sub">Log in to get started</h3>
