@@ -5,6 +5,30 @@ import "./DashboardPage.css";
 import { Project } from "../types";
 import { Icons } from "../icons";
 
+const mockProjects = [
+    {
+        id: 1234,
+        title: "Lorem",
+        key: "key1",
+        groups: [],
+        document_id: "1234",
+    },
+    {
+        id: 5678,
+        title: "Ipsum",
+        key: "key2",
+        groups: [],
+        document_id: "5678",
+    },
+    {
+        id: 9012,
+        title: "Dolor",
+        key: "key3",
+        groups: [],
+        document_id: "9012",
+    },
+];
+
 export function DashboardPage() {
     const [projects, setProjects] = useState<Project[] | []>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -20,7 +44,7 @@ export function DashboardPage() {
                 const projects = (await getProjects()) as Project[];
 
                 if (isMounted) {
-                    setProjects(projects);
+                    setProjects([...projects, ...mockProjects]);
                     setIsLoading(false);
                 }
             } catch (error) {
