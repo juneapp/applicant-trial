@@ -1,0 +1,114 @@
+.dashboard-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    padding: 24px;
+}
+
+.dashboard-page__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--paragraph-headlines-color);
+}
+
+.project-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .project-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.dashboard-page__new-project-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border: 2px solid var(--main-color);
+    border-radius: 8px;
+    background-color: var(--main-color-light);
+    stroke: var(--main-color);
+    color: var(--main-color);
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.dashboard-page__new-project-card:hover {
+    background-color: var(--main-color-darker);
+    border: 2px solid var(--main-color-darker);
+    color: var(--main-color-light);
+    stroke: var(--main-color-light);
+}
+
+.dashboard-page__new-project-card:active {
+    scale: 0.98;
+}
+
+.dashboard-page__card-skeleton {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.dashboard-page__card-skeleton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        var(--main-color-light) 25%,
+        var(--main-color-light) 75%,
+        transparent
+    );
+    transform: skewX(-10deg);
+    animation: shimmer 2500ms infinite linear;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: 0;
+    }
+}
+
+.dashboard-page__card-skeleton {
+    animation: shimmer 2s linear infinite;
+    background: #f0f0f0
+        linear-gradient(
+            to right,
+            transparent 0%,
+            var(--main-color-light) 25%,
+            transparent 70%
+        );
+    background-size: 200% 100%;
+    height: 250px;
+    width: 250px;
+}
