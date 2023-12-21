@@ -33,7 +33,10 @@ export function LoginForm() {
         }
     }, [usernameError, passwordError]);
 
-    //TODO complete validation logic
+    useEffect(() => {
+        setFormError("");
+    }, [username, password]);
+
     const validateForm = () => {
         let isValid = true;
         if (username.trim() === "") {
@@ -41,7 +44,7 @@ export function LoginForm() {
 
             isValid = false;
         } else if (username.trim().length < 5) {
-            setUsernameError("Username must be at least 5 characters long");
+            setUsernameError("Username needs 5+ characters");
             isValid = false;
         } else {
             setUsernameError("");
@@ -49,6 +52,9 @@ export function LoginForm() {
 
         if (password.trim() === "") {
             setPasswordError("Password is required");
+            isValid = false;
+        } else if (password.trim().length < 5) {
+            setUsernameError("Password needs 5+ characters");
             isValid = false;
         } else {
             setPasswordError("");
@@ -61,17 +67,17 @@ export function LoginForm() {
         e.preventDefault();
         setIsLoading(true);
 
+        //? show the spinner
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         if (validateForm()) {
             try {
                 const userData = await loginWithCredentials(username, password);
-                console.log({ userData });
                 addUser(userData);
             } catch (err: unknown) {
                 if (err instanceof Error) {
                     console.error("Login failed:", err);
-                    setFormError(err.message);
+                    setFormError("Unable to log in");
                 } else console.error(err);
             }
         }
@@ -81,35 +87,57 @@ export function LoginForm() {
     //TODO style error messages
     return (
         <form onSubmit={handleSubmit} className="login-form">
-            <div className="form-error" ref={errorSummaryRef} tabIndex={-1}>
-                {usernameError && <p id="usernameError">{usernameError}</p>}
-                {passwordError && <p id="passwordError">{passwordError}</p>}
-            </div>
-            <label className="login-form__input-label">
-                Username:
+            {(usernameError || passwordError) && (
+                <div
+                    className="login-form__error-box"
+                    ref={errorSummaryRef}
+                    tabIndex={-1}
+                >
+                    {usernameError && <p id="usernameError">{usernameError}</p>}
+                    {passwordError && <p id="passwordError">{passwordError}</p>}
+                </div>
+            )}
+            <div className="login-form__input-container">
+                <label htmlFor="username" className="login-form__input-label">
+                    Username
+                </label>
                 <input
+                    id="username"
+                    ref={userNameInputRef}
                     className="login-form__input"
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    // min={8}
                     aria-describedby="usernameError"
                 />
-            </label>
-            <label className="login-form__input-label">
-                Password:
+            </div>
+            <div className="login-form__input-container">
+                <label htmlFor="password" className="login-form__input-label">
+                    Password
+                </label>
                 <input
+                    id="password"
                     className="login-form__input"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    // min={8}
                     aria-describedby="passwordError"
                 />
-            </label>
-            <div className="form-error" ref={formErrorRef} tabIndex={-1}>
-                {formError && <p id="formError">{formError}</p>}
             </div>
+
+            {formError && (
+                <div
+                    className="login-form__error-box"
+                    ref={formErrorRef}
+                    tabIndex={-1}
+                >
+                    <p>{formError}</p>
+                </div>
+            )}
             <Button
                 isLoading={isLoading}
                 size="medium"
