@@ -29,7 +29,7 @@ Hier sind alle relevanten Daten für das Probeprojekt.
 
 ### Endpunkte: 
 Login: `http://dev.june.local:8008/api/auth/login_check`
--> Credentials als JSON im Body übergeben
+-> Die Credentials erhälst du per Mail
 
 Projekte: `http://dev.june.local:8008/api/v2/project`
 -> Authorisation Header als Bearer Token übergeben 
