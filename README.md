@@ -34,10 +34,6 @@ Login: `http://dev.june.local:8008/api/auth/login_check`
 Projekte: `http://dev.june.local:8008/api/v2/project`
 -> Authorisation Header als Bearer Token übergeben 
 
-### Credentials: 
-User: `june.application`
-Password: `Vowac#Uwiwi278`
-
 
 ### JUNE Farbcodes:
 + `20C6AF`    Main Color
